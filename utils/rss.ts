@@ -29,7 +29,7 @@ export function generateRSSFeed(
   blogDocs.forEach((doc) => {
     feed.addItem({
       title: doc.title,
-      link: withTrailingSlash(joinURL(origin, 'blog', doc.path)),
+      link: withTrailingSlash(joinURL(origin, doc.path)),
       description: doc.description,
       date: new Date(doc.date),
       image: doc.image ? joinURL(origin, doc.image) : undefined,
@@ -40,7 +40,7 @@ export function generateRSSFeed(
           link: withTrailingSlash(origin)
         }
       ],
-      guid: withTrailingSlash(joinURL(origin, 'blog', doc.path))
+      guid: withTrailingSlash(joinURL(origin, doc.path))
     })
   })
   return feed
