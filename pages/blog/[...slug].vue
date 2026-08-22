@@ -4,7 +4,7 @@ import { Disqus } from 'vue-disqus'
 import { withTrailingSlash } from 'ufo'
 import { computed } from 'vue'
 import { ClientOnly } from '#components'
-import { useRoute, useAsyncData } from '#imports'
+import { useRoute, useAsyncData, useHead } from '#imports'
 import { queryCollection, queryCollectionItemSurroundings } from '#imports'
 import { Head, Meta, DBigBangButton, ContentRenderer } from '#components'
 
@@ -75,6 +75,12 @@ const langIcon = computed(() => {
 const docDate = computed(() => {
   if (!doc.value?.date) return undefined
   return new Date(doc.value.date)
+})
+
+useHead({
+  htmlAttrs: {
+    lang: doc.value?.lang ?? 'en'
+  }
 })
 </script>
 
