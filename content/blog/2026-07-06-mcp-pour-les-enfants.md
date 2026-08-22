@@ -6,6 +6,7 @@ lang: fr
 tags:
   - MCP
   - AI
+  - NodeJS
 ---
 
 # Le serveur MCP (Model Context Protocol) pour les enfants
