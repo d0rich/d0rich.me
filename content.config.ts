@@ -9,6 +9,7 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         draft: z.boolean().optional().default(false),
+        lang: z.string().optional().default('en'),
         description: z.string().optional(),
         image: z.string().optional(),
         date: z.string().date(),
