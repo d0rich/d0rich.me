@@ -1,0 +1,2 @@
+[build]
+  ignore = "node apps/d0rich.me/ignore-build.mjs"
