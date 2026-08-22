@@ -42,19 +42,46 @@ const { data: blogPosts } = useAsyncData(
     server: true
   }
 )
+const currentOrigin = computed(() => {
+  if (window) {
+    return window.location.origin
+  }
+  return ''
+})
+
+const rssLink = computed(() => {
+  if (currentOrigin.value) {
+    return `${currentOrigin.value}/blog/rss.xml`
+  }
+  return ''
+})
+
+const rssLinkEn = computed(() => {
+  if (currentOrigin.value) {
+    return `${currentOrigin.value}/blog/rss.en.xml`
+  }
+  return ''
+})
+
+const rssLinkFr = computed(() => {
+  if (currentOrigin.value) {
+    return `${currentOrigin.value}/blog/rss.fr.xml`
+  }
+  return ''
+})
 </script>
 
 <template>
   <div class="mb-96">
     <AsyncSafeSeoWithOg title="Blog" />
-    <Meta>
+    <Head>
       <Link
         rel="alternate"
         type="application/rss+xml"
         title="RSS Feed"
         href="/blog/rss.xml"
       />
-    </Meta>
+    </Head>
     <div class="relative isolate px-3 max-w-3xl mx-auto mt-10">
       <div class="max-w-lg pb-5">
         <h1
@@ -79,7 +106,7 @@ const { data: blogPosts } = useAsyncData(
 
     <div class="px-3 max-w-3xl mx-auto flex gap-3 mt-3 mb-10">
       <DBtn
-        href="/blog/rss.xml"
+        :href="rssLink"
         target="_blank"
         rel="noopener noreferrer"
         no-rotate
@@ -92,7 +119,7 @@ const { data: blogPosts } = useAsyncData(
         RSS Feed
       </DBtn>
       <DBtn
-        href="/blog/rss.en.xml"
+        :href="rssLinkEn"
         target="_blank"
         rel="noopener noreferrer"
         no-rotate
@@ -102,7 +129,7 @@ const { data: blogPosts } = useAsyncData(
         RSS English
       </DBtn>
       <DBtn
-        href="/blog/rss.fr.xml"
+        :href="rssLinkFr"
         target="_blank"
         rel="noopener noreferrer"
         no-rotate
