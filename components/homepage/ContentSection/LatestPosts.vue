@@ -7,7 +7,7 @@ const { data: blogPosts } = await useAsyncData(
   'blog/latest',
   () =>
     queryCollection('blog')
-      .select('title', 'description', 'date', 'path', 'image', 'tags')
+      .select('title', 'description', 'date', 'path', 'image', 'tags', 'lang')
       .where('draft', '=', 0)
       .limit(3)
       .order('date', 'DESC')

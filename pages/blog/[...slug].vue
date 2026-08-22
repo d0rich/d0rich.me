@@ -62,6 +62,16 @@ const linkToBlog = computed(() => {
   )
 })
 
+const langIcon = computed(() => {
+  if (doc.value?.lang === 'fr') {
+    return 'openmoji:flag-france'
+  } else if (doc.value?.lang === 'en') {
+    return 'openmoji:flag-united-kingdom'
+  } else {
+    return ''
+  }
+})
+
 const docDate = computed(() => {
   if (!doc.value?.date) return undefined
   return new Date(doc.value.date)
@@ -86,9 +96,12 @@ const docDate = computed(() => {
       <nav class="mb-10">
         <DBigBangButton text="< Back" :to="withTrailingSlash(linkToBlog)" />
       </nav>
-      <time v-if="docDate" :datetime="docDate.toISOString()">
-        {{ dateToDayMonthYear(doc.date) }}
-      </time>
+      <div>
+        <time v-if="docDate" :datetime="docDate.toISOString()">
+          {{ dateToDayMonthYear(doc.date) }}
+        </time>
+        <Icon v-if="langIcon" :name="langIcon" class="inline-block ml-2" />
+      </div>
     </div>
     <ContentRenderer
       :value="doc"

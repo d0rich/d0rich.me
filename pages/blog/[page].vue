@@ -32,7 +32,7 @@ const { data: blogPosts } = useAsyncData(
   `blog/pages/${currentPage.value}`,
   () =>
     queryCollection('blog')
-      .select('title', 'description', 'date', 'path', 'image', 'tags')
+      .select('title', 'description', 'date', 'path', 'image', 'tags', 'lang')
       .where('draft', '=', 0)
       .limit(itemsOnPage)
       .skip((currentPage.value - 1) * itemsOnPage)
