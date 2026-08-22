@@ -44,7 +44,7 @@ const { data: position } = useAsyncData(
       .where('draft', '=', 0)
       .orWhere((query) =>
         query
-          .where('date', '<', doc.value?.date)
+          .where('date', '>', doc.value?.date)
           .where('date', '=', doc.value?.date)
       )
       .all(),
@@ -58,7 +58,7 @@ const { data: position } = useAsyncData(
 const linkToBlog = computed(() => {
   return getLinkToPaginatedPage(
     '/blog',
-    Math.floor((position.value ?? 1) / (itemsOnPage - 1) + 1)
+    Math.ceil((position.value ?? 1) / itemsOnPage)
   )
 })
 
