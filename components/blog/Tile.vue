@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { BlogCollectionItem } from '@nuxt/content'
 import { DChip } from '#components'
 
@@ -7,12 +8,22 @@ import { dateToDayMonthYear } from '@/utils/date'
 
 import SharedTile from '~/components/shared/Tile.vue'
 
-defineProps<{
+const props = defineProps<{
   article: Pick<
     BlogCollectionItem,
-    'title' | 'description' | 'tags' | 'path' | 'image' | 'date'
+    'title' | 'description' | 'tags' | 'path' | 'image' | 'date' | 'lang'
   >
 }>()
+
+const langIcon = computed(() => {
+  if (props.article.lang === 'fr') {
+    return 'openmoji:flag-france'
+  } else if (props.article.lang === 'en') {
+    return 'openmoji:flag-united-kingdom'
+  } else {
+    return ''
+  }
+})
 </script>
 
 <template>
@@ -33,6 +44,7 @@ defineProps<{
       </p>
 
       <div class="text-right font-bold order-1">
+        <Icon :name="langIcon" class="inline-block mr-1" />
         <time>{{ dateToDayMonthYear(article.date) }}</time>
       </div>
 

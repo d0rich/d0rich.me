@@ -33,6 +33,7 @@
     "@d0rich/nuxt-design-system": "*",
     "better-sqlite3": "^12.11.1",
     "dateformat": "^5.0.3",
+    "feed": "^6.0.0",
     "gsap": "^3.12.7",
     "octokit": "^4.1.0",
     "rehype-external-links": "^3.0.0",

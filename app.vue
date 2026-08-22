@@ -79,12 +79,12 @@ useSeoMeta({
   author: 'Nikolai Dorofeev',
   generator: 'Nuxt 3',
   ogSiteName: 'd0rich.me',
-  ogImage: 'https://d0rich.me/og/image.v2.jpg',
+  ogImage: 'https://d0rich.me/og/image.v3.jpg',
   ogUrl: computed(() => 'https://d0rich.me' + route.path),
   twitterCard: 'summary_large_image',
   twitterSite: '@d0rich',
   twitterCreator: '@d0rich',
-  twitterImage: 'https://d0rich.me/og/image.v2.jpg',
+  twitterImage: 'https://d0rich.me/og/image.v3.jpg',
   twitterTitle: 'd0rich: Digital Artisan',
   twitterDescription: description
 })
@@ -98,7 +98,10 @@ useSeoMeta({
       rel="preload"
       :href="emojiFontLink"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null
+        this.rel = 'stylesheet'
+      "
     />
     <NoScript>
       <Link rel="stylesheet" :href="emojiFontLink" />
