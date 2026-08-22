@@ -98,7 +98,10 @@ useSeoMeta({
       rel="preload"
       :href="emojiFontLink"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null
+        this.rel = 'stylesheet'
+      "
     />
     <NoScript>
       <Link rel="stylesheet" :href="emojiFontLink" />

@@ -1,6 +1,6 @@
 import { queryCollection } from '@nuxt/content/server'
 import { defineEventHandler, setHeader } from 'h3'
-import { generateRSSFeed } from '~/utils/rss';
+import { generateRSSFeed } from '~/utils/rss'
 
 export default defineEventHandler(async (event) => {
   const blogDocs = await queryCollection(event, 'blog')
