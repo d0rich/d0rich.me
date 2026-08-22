@@ -47,8 +47,16 @@ const { data: blogPosts } = useAsyncData(
 <template>
   <div class="mb-96">
     <AsyncSafeSeoWithOg title="Blog" />
-    <div class="relative isolate px-3 max-w-3xl mx-auto my-10 overflow-hidden">
-      <div class="max-w-lg">
+    <Meta>
+      <Link
+        rel="alternate"
+        type="application/rss+xml"
+        title="RSS Feed"
+        href="/blog/rss.xml"
+      />
+    </Meta>
+    <div class="relative isolate px-3 max-w-3xl mx-auto mt-10">
+      <div class="max-w-lg pb-5">
         <h1
           class="text-6xl sm:text-8xl font-serif mb-5 dark:text-cyan-300 text-cyan-700"
         >
@@ -67,6 +75,42 @@ const { data: blogPosts } = useAsyncData(
         outline
         class="h-full w-full flex flex-row-reverse absolute top-0 -z-10 opacity-25 sm:opacity-100 transition-all"
       />
+    </div>
+
+    <div class="px-3 max-w-3xl mx-auto flex gap-3 mt-3 mb-10">
+      <DBtn
+        href="/blog/rss.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+        no-rotate
+        text-transform="capitalize"
+      >
+        <Icon
+          name="openmoji:globe-showing-europe-africa"
+          class="inline-block mr-2"
+        />
+        RSS Feed
+      </DBtn>
+      <DBtn
+        href="/blog/rss.en.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+        no-rotate
+        text-transform="capitalize"
+      >
+        <Icon name="openmoji:flag-united-kingdom" class="inline-block mr-2" />
+        RSS English
+      </DBtn>
+      <DBtn
+        href="/blog/rss.fr.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+        no-rotate
+        text-transform="capitalize"
+      >
+        <Icon name="openmoji:flag-france" class="inline-block mr-2" />
+        RSS Français
+      </DBtn>
     </div>
 
     <section v-if="pagesCount">
