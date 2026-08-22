@@ -17,7 +17,7 @@ export function generateRSSFeed(blogDocs: BlogCollectionItem[], lang?: string): 
     },
     favicon: 'https://d0rich.me/favicon.ico',
     category: 'Technology',
-    image: 'https://d0rich.me/og/image.v2.jpg',
+    image: 'https://d0rich.me/og/image.v3.jpg',
     updated: new Date(blogDocs[0]?.date || Date.now()),
     language: lang
   })
