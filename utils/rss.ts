@@ -5,10 +5,15 @@ import type { BlogCollectionItem } from '@nuxt/content'
 
 const origin = 'https://d0rich.me'
 
-export function generateRSSFeed(blogDocs: BlogCollectionItem[], lang?: string): Feed {
+export function generateRSSFeed(
+  blogDocs: BlogCollectionItem[],
+  lang?: string,
+  title: string = 'The Blog of d0rich (Nikolai Dorofeev)',
+  description: string = "Nikolai Dorofeev's professional thoughts, insights, and updates on technology, programming, and software development."
+): Feed {
   const feed = new Feed({
-    title: 'd0rich Blog',
-    description: "Latest news and updates from d0rich's blog",
+    title: title,
+    description: description,
     link: withTrailingSlash(joinURL(origin, 'blog')),
     author: {
       name: 'Nikolai Dorofeev',
