@@ -6,25 +6,38 @@
     "prepare": "nuxt prepare",
     "dev": "nuxt dev",
     "lint": "eslint .",
+    "lintfix": "prettier --write --list-different . && eslint . --fix",
     "typecheck": "nuxi typecheck",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "@iconify-json/logos": "^1.2.9",
+    "@iconify-json/mdi": "^1.2.3",
+    "@nuxt/content": "^3.1.1",
+    "@nuxt/eslint-config": "^1.0.1",
     "@types/dateformat": "^5.0.3",
     "@vueuse/core": "^12.5.0",
-    "nuxt": "^3.15.3"
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0",
+    "eslint-plugin-prettier": "^5.2",
+    "nuxt": "^3.15.3",
+    "prettier": "^3.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "vue-disqus": "^5.1.0",
+    "vue-tsc": "^2.2.2"
   },
   "dependencies": {
     "@d0rich/nuxt-design-system": "*",
+    "better-sqlite3": "^12.11.1",
     "dateformat": "^5.0.3",
     "gsap": "^3.12.7",
     "octokit": "^4.1.0",
     "rehype-external-links": "^3.0.0",
     "remark-simple-plantuml": "npm:@akebifiky/remark-simple-plantuml@^1.0.2",
     "sitemap": "^8.0.0",
-    "unist-util-visit": "^5.0.0",
-    "vue-disqus": "^5.1.0"
+    "unist-util-visit": "^5.0.0"
   }
 }
