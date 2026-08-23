@@ -1,5 +1,4 @@
 ---
-description: "Express.js vs MCP : la même logique, une API que les LLM comprennent mieux"
 date: 2026-07-30
 image: /blog/2026-07-30/cover.webp
 lang: fr
