@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import Giscus from '@giscus/vue'
+import Giscus, { type Theme } from '@giscus/vue'
 import { withTrailingSlash } from 'ufo'
 import { computed } from 'vue'
 import { ClientOnly } from '#components'
 import { useRoute, useAsyncData, useHead } from '#imports'
+import { useColorMode } from '#imports'
 import { queryCollection, queryCollectionItemSurroundings } from '#imports'
 import { Head, Meta, DBigBangButton, ContentRenderer } from '#components'
 
@@ -19,6 +20,7 @@ import { useBlogNavigationConfig } from '~/composables/navigation'
 const slug = clearSlug(useRoute().params.slug as string[])
 const { itemsOnPage } = useBlogNavigationConfig()
 const pagePath = ['/blog', ...slug].join('/')
+const colorMode = useColorMode()
 
 const { data: doc } = useAsyncData(pagePath, async () => {
   // TODO: Check if drafts are allowed
@@ -81,6 +83,14 @@ useHead({
     lang: doc.value?.lang ?? 'en'
   }
 })
+
+const commentsTheme = computed<Theme>(() => {
+  if (colorMode.value === 'dark') {
+    return 'dark'
+  } else {
+    return 'light'
+  }
+})
 </script>
 
 <template>
@@ -141,6 +151,7 @@ useHead({
           loading="lazy"
           :lang="doc.lang"
           reactions-enabled="1"
+          :theme="commentsTheme"
         />
       </div>
 
