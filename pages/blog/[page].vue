@@ -143,7 +143,7 @@ const rssLinkFr = computed(() => {
     <section v-if="pagesCount">
       <DPagination
         v-if="pagesCount > 1"
-        class="mx-auto my-10 max-w-md"
+        class="mx-auto my-10 text-center"
         :current-page="currentPage"
         :all-pages="pagesCount"
         base-link="/blog"
@@ -159,7 +159,7 @@ const rssLinkFr = computed(() => {
       </nav>
       <DPagination
         v-if="pagesCount > 1"
-        class="mx-auto my-10 max-w-md"
+        class="mx-auto my-10 text-center"
         :current-page="currentPage"
         :all-pages="pagesCount"
         base-link="/blog"
