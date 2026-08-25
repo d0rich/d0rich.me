@@ -26,11 +26,11 @@
     "prettier": "^3.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "vue-disqus": "^5.1.0",
     "vue-tsc": "^2.2.2"
   },
   "dependencies": {
     "@d0rich/nuxt-design-system": "*",
+    "@giscus/vue": "^3.1.1",
     "better-sqlite3": "^12.11.1",
     "dateformat": "^5.0.3",
     "feed": "^6.0.0",

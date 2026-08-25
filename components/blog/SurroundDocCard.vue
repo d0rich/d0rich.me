@@ -12,7 +12,7 @@ export default {
 
 <script setup lang="ts">
 defineProps<{
-  doc: BlogCollectionItem
+  doc: Pick<BlogCollectionItem, 'title' | 'description' | 'path'>
   direction: 'before' | 'after'
 }>()
 </script>

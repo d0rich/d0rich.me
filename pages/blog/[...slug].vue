@@ -1,10 +1,10 @@
 <script setup lang="ts">
-// @ts-ignore
-import { Disqus } from 'vue-disqus'
+import Giscus, { type Theme } from '@giscus/vue'
 import { withTrailingSlash } from 'ufo'
 import { computed } from 'vue'
 import { ClientOnly } from '#components'
 import { useRoute, useAsyncData, useHead } from '#imports'
+import { useColorMode } from '#imports'
 import { queryCollection, queryCollectionItemSurroundings } from '#imports'
 import { Head, Meta, DBigBangButton, ContentRenderer } from '#components'
 
@@ -20,6 +20,7 @@ import { useBlogNavigationConfig } from '~/composables/navigation'
 const slug = clearSlug(useRoute().params.slug as string[])
 const { itemsOnPage } = useBlogNavigationConfig()
 const pagePath = ['/blog', ...slug].join('/')
+const colorMode = useColorMode()
 
 const { data: doc } = useAsyncData(pagePath, async () => {
   // TODO: Check if drafts are allowed
@@ -82,6 +83,14 @@ useHead({
     lang: doc.value?.lang ?? 'en'
   }
 })
+
+const commentsTheme = computed<Theme>(() => {
+  if (colorMode.value === 'dark') {
+    return 'dark'
+  } else {
+    return 'light'
+  }
+})
 </script>
 
 <template>
@@ -131,13 +140,21 @@ useHead({
     <nav class="blog-article blog-fonts my-10">
       <DBigBangButton text="< Back" :to="withTrailingSlash(linkToBlog)" />
     </nav>
-    <ClientOnly>
-      <Disqus
-        class="blog-fonts max-w-screen-md mx-auto px-3 mt-32"
-        :identifier="doc.path"
-        :url="`https://d0rich.me${pagePath}`"
-      />
-    </ClientOnly>
+    <div class="blog-fonts max-w-screen-md mx-auto px-3 mt-32">
+      <ClientOnly>
+        <Giscus
+          repo="d0rich/d0rich.me"
+          repo-id="R_kgDOUAdZYg"
+          category="Comments"
+          category-id="DIC_kwDOUAdZYs4DEJrH"
+          mapping="pathname"
+          loading="lazy"
+          :lang="doc.lang"
+          reactions-enabled="1"
+          :theme="commentsTheme"
+        />
+      </ClientOnly>
+    </div>
   </div>
   <Error404 v-else />
 </template>
