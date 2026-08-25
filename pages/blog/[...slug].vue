@@ -140,8 +140,8 @@ const commentsTheme = computed<Theme>(() => {
     <nav class="blog-article blog-fonts my-10">
       <DBigBangButton text="< Back" :to="withTrailingSlash(linkToBlog)" />
     </nav>
-    <ClientOnly>
-      <div class="blog-fonts max-w-screen-md mx-auto px-3 mt-32">
+    <div class="blog-fonts max-w-screen-md mx-auto px-3 mt-32">
+      <ClientOnly>
         <Giscus
           repo="d0rich/d0rich.me"
           repo-id="R_kgDOUAdZYg"
@@ -153,9 +153,8 @@ const commentsTheme = computed<Theme>(() => {
           reactions-enabled="1"
           :theme="commentsTheme"
         />
-      </div>
-
-    </ClientOnly>
+      </ClientOnly>
+    </div>
   </div>
   <Error404 v-else />
 </template>
