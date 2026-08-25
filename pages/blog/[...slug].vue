@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// @ts-ignore
-import { Disqus } from 'vue-disqus'
+import Giscus from '@giscus/vue'
 import { withTrailingSlash } from 'ufo'
 import { computed } from 'vue'
 import { ClientOnly } from '#components'
@@ -132,11 +131,19 @@ useHead({
       <DBigBangButton text="< Back" :to="withTrailingSlash(linkToBlog)" />
     </nav>
     <ClientOnly>
-      <Disqus
-        class="blog-fonts max-w-screen-md mx-auto px-3 mt-32"
-        :identifier="doc.path"
-        :url="`https://d0rich.me${pagePath}`"
-      />
+      <div class="blog-fonts max-w-screen-md mx-auto px-3 mt-32">
+        <Giscus
+          repo="d0rich/d0rich.me"
+          repo-id="R_kgDOUAdZYg"
+          category="Comments"
+          category-id="DIC_kwDOUAdZYs4DEJrH"
+          mapping="pathname"
+          loading="lazy"
+          :lang="doc.lang"
+          reactions-enabled="1"
+        />
+      </div>
+
     </ClientOnly>
   </div>
   <Error404 v-else />
